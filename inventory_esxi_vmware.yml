@@ -1,6 +1,7 @@
 plugin: community.vmware.vmware_host_inventory
 strict: True
 validate_certs: False
+group_by_datacenter: true
 properties:
   - name
   - summary.runtime.powerState
