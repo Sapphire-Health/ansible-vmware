@@ -1,0 +1,27 @@
+---
+- name: Get VM Info
+  hosts: "{{ match_host }}"
+  become: false
+  gather_facts: false
+  #pre_tasks:
+  #  - include_vars: vars.yml
+  tasks:
+    - name: Gather all registered virtual machines
+      vmware_vm_info:
+        hostname: '{{ inventory_hostname }}'
+        #username: '{{ vcenter_username }}'
+        #password: '{{ vcenter_password }}'
+        validate_certs: false
+      register: vms
+      delegate_to: localhost
+    #- name: print vm info
+    #  ansible.builtin.debug:
+    #    msg: "{{ item.guest_name }} ({{ item.ip_address }}) - {{ inventory_hostname }}"
+    #  loop: "{{ vms.virtual_machines }}"
+    #  loop_control:
+    #    label: "{{ item.guest_name }}"
+    - name: print vm info
+      ansible.builtin.debug:
+        msg: "{{ sortedvms }}"
+      vars:
+        sortedvms: "{{ vms.virtual_machines | sort(attribute='guest_name') | map(attribute='guest_name') | list }}"
