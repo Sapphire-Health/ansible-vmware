@@ -1,0 +1,6 @@
+plugin: community.vmware.vmware_host_inventory
+strict: True
+validate_certs: False
+properties:
+  - name
+  - summary.runtime.powerState
