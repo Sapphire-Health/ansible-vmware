@@ -1,0 +1,19 @@
+---
+- name: Get facts from ESXi hosts
+  hosts: "{{ match_host }}"
+  become: false
+  gather_facts: false
+  #pre_tasks:
+  #  - include_vars: vars.yml
+  tasks:
+    - name: Get ESXi host facts
+      vmware_host_facts:
+        hostname: '{{ inventory_hostname }}'
+        #username: '{{ vcenter_username }}'
+        #password: '{{ vcenter_password }}'
+        validate_certs: false
+      register: hosts
+      delegate_to: localhost
+    - name: print host info
+      ansible.builtin.debug:
+        msg: "{{ hosts }}"
