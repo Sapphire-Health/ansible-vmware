@@ -34,3 +34,8 @@ export VMWARE_PASSWORD=password
 ```
 ansible-inventory -i inventory_esxi_vmware.yml --graph
 ```
+
+## List all VMs on ESXi hosts using dynamic inventory
+```
+ansible-playbook -i inventory_esxi_vmware.yml -e match_host=wjm* esxi/get_vms.yml
+```

@@ -1,0 +1,1 @@
+These playbooks are designed to be run ESXi hosts with no dependency on vCenter
