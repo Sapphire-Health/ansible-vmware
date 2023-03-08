@@ -12,6 +12,13 @@
         #username: '{{ vcenter_username }}'
         #password: '{{ vcenter_password }}'
         validate_certs: false
+        properties:
+          - hardware.memorySize
+          - hardware.cpuInfo.numCpuCores
+          - config.product
+          - overallStatus
+          - config.option
+          - runtime.connectionState
       register: hosts
       delegate_to: localhost
     - name: print host info
