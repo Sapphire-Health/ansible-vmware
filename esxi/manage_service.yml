@@ -1,0 +1,19 @@
+---
+- name: Manage services on ESXi hosts
+  hosts: "{{ match_host }}"
+  become: false
+  gather_facts: false
+  #pre_tasks:
+  #  - include_vars: vars.yml
+  tasks:
+    - name: Manage service on ESXi host
+      vmware_host_service_manager:
+        hostname: '{{ inventory_hostname }}'
+        #username: '{{ vcenter_username }}'
+        #password: '{{ vcenter_password }}'
+        esxi_hostname: '{{ inventory_hostname }}'
+        service_name: "{{ service }}"
+        #service_policy: "{{ service_policy }}"
+        state: "{{ state }}"
+        validate_certs: false
+      delegate_to: localhost
