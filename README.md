@@ -30,9 +30,9 @@ export VMWARE_USER=domain\\username
 export VMWARE_PASSWORD=password
 ```
 
-## Get ESXi Inventory
+## Get ESXi Inventory in YAML format
 ```
-ansible-inventory -i inventory_esxi_vmware.yml --graph
+ansible-inventory -i inventory_esxi_vmware.yml --list -y
 ```
 
 ## List all VMs on ESXi hosts using dynamic inventory
