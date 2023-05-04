@@ -30,6 +30,15 @@ export VMWARE_USER=domain\\username
 export VMWARE_PASSWORD=password
 ```
 
+Optionally prompt for username and password so the values won't be saved in bash history
+
+```
+IFS= read -p 'Username: ' -r VMWARE_USER
+IFS= read -s -p 'Password: ' -r VMWARE_PASSWORD
+export VMWARE_USER
+export VMWARE_PASSWORD
+```
+
 ## Get ESXi Inventory in YAML format
 ```
 ansible-inventory -i inventory_esxi_vmware.yml --list -y
